@@ -1,35 +1,41 @@
-# 🎬 MovieInsightML — Revenue Forecasting & Genre Classification with TinyML Deployment
+# MovieInsightML: Revenue Forecasting and Genre Classification with TinyML Deployment
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 MovieInsightML is an end-to-end machine learning pipeline that combines **text and numeric features** from a movie metadata dataset to perform:
 
-- 📈 **Regression** — Predict a movie's revenue using budget, popularity, runtime, vote stats, and NLP-extracted text features
-- 🏷️ **Classification** — Predict the main genre of a movie (20-class problem)
-- 📦 **TinyML Deployment** — Convert the best regression model to TensorFlow Lite (`.tflite`) and evaluate it on simulated edge devices via Edge Impulse
+- **Regression**: Predict a movie's revenue using budget, popularity, runtime, vote stats, and NLP-extracted text features
+- **Classification**: Predict the main genre of a movie (20-class problem)
+- **TinyML Deployment**: Convert the best regression model to TensorFlow Lite (`.tflite`) and evaluate it on simulated edge devices via Edge Impulse
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 MovieInsightML/
 │
-├── ml copy.ipynb                        # Regression pipeline (full workflow)
+├── regression.ipynb                     # Regression pipeline (full workflow)
 ├── clss.ipynb                           # Classification pipeline
 │
 ├── linear_regression_float32.tflite     # TFLite model (float32)
 ├── linear_regression_int8.tflite        # TFLite model (int8 quantized)
 │
 ├── ML_PROJECT.pdf                       # Full project report
+├── Machine_Learning_Project_FA2025.docx # Report source
+├── readme.txt                           # Short project description
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🧠 Models Used
+## Models Used
+
+All regression and classification models were implemented from scratch in NumPy, without scikit-learn. The notebooks only use NumPy, pandas, SciPy, TextBlob and TensorFlow (for the TFLite conversion).
+
 
 ### Regression (Revenue Forecasting)
 | Model | R² | RMSE | MAE |
@@ -50,7 +56,7 @@ MovieInsightML/
 
 ---
 
-## 🔬 Feature Engineering
+## Feature Engineering
 
 **From overview text:**
 - Word count
@@ -67,7 +73,7 @@ MovieInsightML/
 
 ---
 
-## 📦 TinyML Deployment
+## TinyML Deployment
 
 The Linear Regression model was converted to TensorFlow Lite and evaluated on Edge Impulse:
 
@@ -81,21 +87,17 @@ The Linear Regression model was converted to TensorFlow Lite and evaluated on Ed
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
-```bash
-pip install numpy pandas scikit-learn matplotlib seaborn
-pip install tensorflow textblob nltk
-pip install scipy joblib
-```
+Python 3 with the packages in `requirements.txt` (NumPy, pandas, SciPy, Matplotlib, TensorFlow, TextBlob).
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-username/MovieInsightML.git
+git clone https://github.com/aatqa23/MovieInsightML.git
 cd MovieInsightML
 ```
 
@@ -106,7 +108,7 @@ pip install -r requirements.txt
 
 3. **Run Regression Notebook**
 ```bash
-jupyter notebook "ml copy.ipynb"
+jupyter notebook regression.ipynb
 ```
 
 4. **Run Classification Notebook**
@@ -114,20 +116,20 @@ jupyter notebook "ml copy.ipynb"
 jupyter notebook clss.ipynb
 ```
 
-5. **TFLite models** are ready to use directly — upload `.tflite` files to [Edge Impulse](https://edgeimpulse.com) for edge evaluation.
+5. **TFLite models** are ready to use directly. Upload the `.tflite` files to [Edge Impulse](https://edgeimpulse.com) for edge evaluation.
 
 ---
 
-## 📊 Key Results
+## Key Results
 
-- ✅ Linear Regression achieved **R² = 0.70** on revenue prediction with 5-fold CV stability (std = 0.015)
-- ✅ Decision Tree achieved highest classification accuracy at **34.14%** across 20 genres
-- ✅ Model successfully converted to TFLite (float32 + int8 quantized) with significant size reduction
-- ✅ EON Compiler deployment showed superior memory efficiency on simulated microcontrollers
+- Linear Regression achieved **R² = 0.70** on revenue prediction with 5-fold CV stability (std = 0.015)
+- Decision Tree achieved highest classification accuracy at **34.14%** across 20 genres
+- Model successfully converted to TFLite (float32 + int8 quantized) with significant size reduction
+- EON Compiler deployment showed superior memory efficiency on simulated microcontrollers
 
 ---
 
-## 📄 Report
+## Report
 
 Full methodology, results, and analysis are documented in [`ML_PROJECT.pdf`](./ML_PROJECT.pdf).
 
